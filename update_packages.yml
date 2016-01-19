@@ -1,0 +1,21 @@
+---
+- name: Updates all packages to latest
+  hosts: all
+  remote_user: vagrant
+  become: true
+  vars:
+  roles:
+  tasks:
+    - name: Updating apt-cache
+      apt:
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: upgrade intalled packages
+      command: "apt-get upgrade -y"
+
+    - name: cleaning up
+      command: "{{ item }}"
+      with_items:
+        - 'apt-get autoclean -y'
+        - 'apt-get cache clean'

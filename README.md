@@ -1,7 +1,7 @@
 Purpose
 =========
 
-Installs and configures a Gerrit Code Review server...https://www.gerritcodereview.com/ and a client to use for testing and learning.
+Installs and configures a Gerrit Code Review server...https://www.gerritcodereview.com/
 
 Requirements
 ------------
@@ -14,7 +14,14 @@ Install the following packages for your OS of choice.
 
 Vagrant
 -------
-Spin up Environment under Vagrant to test.
+Spins up Vagrant environment with the following:
+````
+gerrit (Gerrit Server)
+client (Client - for running code from)
+node1 (Node to run Ansible against)
+node2 (Node to run Ansible against)
+````
+Spin up the environment.
 ````
 vagrant up
 ````
