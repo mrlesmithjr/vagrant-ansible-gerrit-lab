@@ -28,4 +28,24 @@ Vagrant.configure(2) do |config|
       vb.memory = "512"
     end
   end
+  config.vm.define "node1" do |node1|
+    node1.vm.box = "mrlesmithjr/trusty64"
+    node1.vm.hostname = "client"
+
+    node1.vm.network :private_network, ip: "192.168.202.211"
+
+    node1.vm.provider "virtualbox" do |vb|
+      vb.memory = "512"
+    end
+  end
+  config.vm.define "node2" do |node2|
+    node2.vm.box = "mrlesmithjr/trusty64"
+    node2.vm.hostname = "client"
+
+    node2.vm.network :private_network, ip: "192.168.202.212"
+
+    node2.vm.provider "virtualbox" do |vb|
+      vb.memory = "512"
+    end
+  end
 end
