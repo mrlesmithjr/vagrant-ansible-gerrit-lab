@@ -6,16 +6,13 @@
   vars:
   roles:
   tasks:
-    - name: Updating apt-cache
+    - name: Updating packages
       apt:
+        cache_valid_time: 3
         update_cache: true
-        cache_valid_time: 3600
-
-    - name: upgrade intalled packages
-      command: "apt-get -y upgrade"
+        upgrade: safe
 
     - name: cleaning up
       command: "{{ item }}"
       with_items:
         - 'apt-get -y autoclean'
-        - 'apt-get cache clean'
