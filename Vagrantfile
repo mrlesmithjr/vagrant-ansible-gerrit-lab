@@ -16,7 +16,8 @@ Vagrant.configure(2) do |config|
     gerrit.vm.provider "virtualbox" do |vb|
       vb.memory = "1024"
     end
-    gerrit.vm.provision :shell, path: "provision.sh", keep_color: "true"
+    gerrit.vm.provision :shell, inline: 'ansible-galaxy install -r /vagrant/requirements.yml -f'
+    gerrit.vm.provision :shell, inline: 'ansible-playbook -i /vagrant/hosts -c local /vagrant/playbook.yml --limit "gerrit-server"'
   end
   config.vm.define "client" do |client|
     client.vm.box = "mrlesmithjr/trusty64"
@@ -27,6 +28,19 @@ Vagrant.configure(2) do |config|
     client.vm.provider "virtualbox" do |vb|
       vb.memory = "512"
     end
+  end
+  config.vm.define "jenkins" do |jenkins|
+    jenkins.vm.box = "mrlesmithjr/trusty64"
+    jenkins.vm.hostname = "jenkins"
+
+    jenkins.vm.network :private_network, ip: "192.168.202.203"
+    jenkins.vm.network "forwarded_port", guest: 8081, host: 8080
+
+    jenkins.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+    end
+    jenkins.vm.provision :shell, inline: 'ansible-galaxy install -r /vagrant/requirements.yml -f'
+    jenkins.vm.provision :shell, inline: 'ansible-playbook -i /vagrant/hosts -c local /vagrant/playbook.yml --limit "jenkins"'
   end
   config.vm.define "node1" do |node1|
     node1.vm.box = "mrlesmithjr/trusty64"
@@ -48,4 +62,5 @@ Vagrant.configure(2) do |config|
       vb.memory = "512"
     end
   end
+  config.vm.provision :shell, path: "provision.sh", keep_color: "true"
 end
