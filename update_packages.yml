@@ -8,7 +8,7 @@
   tasks:
     - name: Updating packages
       apt:
-        cache_valid_time: 3
+        cache_valid_time: 3600
         update_cache: true
         upgrade: safe
 
