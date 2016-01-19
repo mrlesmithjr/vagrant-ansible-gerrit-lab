@@ -12,10 +12,10 @@
         cache_valid_time: 3600
 
     - name: upgrade intalled packages
-      command: "apt-get upgrade -y"
+      command: "apt-get -y upgrade"
 
     - name: cleaning up
       command: "{{ item }}"
       with_items:
-        - 'apt-get autoclean -y'
+        - 'apt-get -y autoclean'
         - 'apt-get cache clean'
