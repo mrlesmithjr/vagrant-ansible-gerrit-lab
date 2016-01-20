@@ -1,0 +1,15 @@
+---
+- name: Update /etc/hosts
+  hosts: all
+  remote_user: vagrant
+  become: true
+  vars:
+  roles:
+  tasks:
+    - name: updating /etc/hosts
+      lineinfile:
+        dest: /etc/hosts
+        regexp: ".*{{ item }}$"
+        line: "{{ hostvars[item].ansible_ssh_host }} {{ item }}"
+        state: present
+      with_items: groups['all']

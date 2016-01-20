@@ -18,6 +18,7 @@ Spins up Vagrant environment with the following:
 ````
 gerrit (Gerrit Server)
 client (Client - for running code from)
+jenkins (Jenkins CI Server)
 node1 (Node to run Ansible against)
 node2 (Node to run Ansible against)
 ````
