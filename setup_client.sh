@@ -6,7 +6,7 @@ sudo easy_install pip
 sudo -H pip uninstall -y virtualenv
 sudo -H pip uninstall -y virtualenvwrapper
 sudo -H pip install virtualenv
-sudo -H pip install virtualenvwrapper
+sudo -H pip install virtualenvwrapper --ignore-installed six
 
 rm -rf ~/.virtualenvs
 mkdir ~/.virtualenvs
