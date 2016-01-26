@@ -19,6 +19,7 @@ Spins up Vagrant environment with the following:
 gerrit (Gerrit Server)
 client (Client - for running code from)
 jenkins (Jenkins CI Server)
+Gitlab-CE (Gitlab Server)
 node1 (Node to run Ansible against)
 node2 (Node to run Ansible against)
 ````
@@ -30,7 +31,12 @@ vagrant up
 Usage
 -----
 
-Login to WebUI using defined owncloud_admin_user and owncloud_admin_pass vars (http://127.0.0.1:8080) and click register in top right.
+#### Gerrit
+http://127.0.0.1:8080
+#### Jenkins
+http://127.0.0.1:8081
+#### Gitlab-CE
+http://127.0.0.1:8082
 
 To access via ssh
 ````
