@@ -37,6 +37,7 @@
   become: true
   vars:
   roles:
+    - role: ansible-postfix
     - role: ansible-gitlab-ce
   tasks:
     
