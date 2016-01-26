@@ -5,6 +5,14 @@
   vars:
     - enable_dhcp_services: false
     - samba_create_domain_controller: true
+    - samba_create_domain_users: false  #defines if users defined in samba_domain_users list should be created
+    - samba_domain_users:
+        - name: 'gerrit'
+          password: 'P@55w0rd'
+        - name: 'gitlab'
+          password: 'P@55w0rd'
+        - name: 'lab'
+          password: 'P@55w0rd'
     - samba_server_role: 'active directory domain controller'  #defines server role...(standalone server or active directory domain controller)
   roles:
     - role: ansible-isc-dhcp
