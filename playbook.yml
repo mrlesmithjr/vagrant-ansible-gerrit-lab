@@ -3,6 +3,17 @@
   hosts: gerrit-server
   become: true
   vars:
+    - gerrit_replication_info:
+      enabled: true  #defines if replication should be enabled or not
+      name: 'gitlab'  #define name to assign to replication definition
+      owner: 'infra'  #define username or groupname...if collaborating use groupname
+      url: 'git@gitlab.{{ pri_domain_name }}:{{ gerrit_replication_info.owner }}/${name}.git'  #define remote url
+      timeout: '30'  #define the replication timeout
+      threads: '3'  #defines the number of threads to allocate to replication
+      authgroup: 'Gitlab Replication'  #define the gerrit group to execute replication as..This group needs to be created in gerrit as well. and perms defined as below.
+         ##Group Name: Gitlab Replication
+         ##Gitlab Replication denied read to refs/* in all projects
+         ##Gitlab Replication allowed read to refs/* in in Project nameofproject (ex. test-replication)
     - gerrit_auth_type: OPENID  #defines authorization type...OPENID, LDAP, LDAP_BIND...
     - gerrit_db_info:
 #        - host: localhost
@@ -40,7 +51,7 @@
     - role: ansible-postfix
     - role: ansible-gitlab-ce
   tasks:
-    
+
 - name: Update /etc/hosts
   hosts: all
   remote_user: vagrant
