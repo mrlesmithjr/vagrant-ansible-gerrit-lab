@@ -3,6 +3,7 @@
   hosts: gerrit-server
   become: true
   vars:
+    - gerrit_allow_remote_admin: true  #defines if gerrit should allow remote admin capabilities
     - gerrit_replication_enabled: true
     - gerrit_auth_type: OPENID  #defines authorization type...OPENID, LDAP, LDAP_BIND...
     - gerrit_db_info:

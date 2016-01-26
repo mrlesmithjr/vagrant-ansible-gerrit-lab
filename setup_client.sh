@@ -45,15 +45,15 @@ mkdir ~/Git_Projects
 cd ~/Git_Projects
 git clone https://github.com/mrlesmithjr/ansible-clone-git-repos.git
 
-cd ansible-clone-git-repos
-sed -i -e 's|- bunchc|#- bunchc|' defaults/main.yml
-sed -i -e 's|- debops|#- debops|' defaults/main.yml
-sed -i -e 's|- lowescott|#- lowescott|' defaults/main.yml
-sed -i -e 's|- Mierdin|#- Mierdin|' defaults/main.yml
-sed -i -e 's|- dstamen|#- dstamen|' defaults/main.yml
-sed -i -e 's|- phpipam|#- phpipam|' defaults/main.yml
+#cd ansible-clone-git-repos
+#sed -i -e 's|- bunchc|#- bunchc|' defaults/main.yml
+#sed -i -e 's|- debops|#- debops|' defaults/main.yml
+#sed -i -e 's|- lowescott|#- lowescott|' defaults/main.yml
+#sed -i -e 's|- Mierdin|#- Mierdin|' defaults/main.yml
+#sed -i -e 's|- dstamen|#- dstamen|' defaults/main.yml
+#sed -i -e 's|- phpipam|#- phpipam|' defaults/main.yml
 
-workon ansible-1.9.4
-./clone_git_repos.sh
-cd ../GitHub/mrlesmithjr
-ls
+#workon ansible-1.9.4
+#./clone_git_repos.sh
+#cd ../GitHub/mrlesmithjr
+#ls
