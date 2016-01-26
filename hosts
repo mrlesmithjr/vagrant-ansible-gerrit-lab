@@ -14,6 +14,9 @@ gitlab  ansible_ssh_host=192.168.202.204  ansible_ssh_private_key_file=.vagrant/
 node1  ansible_ssh_host=192.168.202.211  ansible_ssh_private_key_file=.vagrant/machines/node1/virtualbox/private_key
 node2  ansible_ssh_host=192.168.202.212  ansible_ssh_private_key_file=.vagrant/machines/node2/virtualbox/private_key
 
+[samba-server]
+samba  ansible_ssh_host=192.168.202.200  ansible_ssh_private_key_file=.vagrant/machines/samba/virtualbox/private_key
+
 [servers]
 node1  ansible_ssh_host=192.168.202.211  ansible_ssh_private_key_file=.vagrant/machines/node1/virtualbox/private_key
 node2  ansible_ssh_host=192.168.202.212  ansible_ssh_private_key_file=.vagrant/machines/node2/virtualbox/private_key
