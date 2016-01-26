@@ -16,6 +16,7 @@ Vagrant
 -------
 Spins up Vagrant environment with the following:
 ````
+samba (AD Domain Controller for LDAP)
 gerrit (Gerrit Server)
 client (Client - for running code from)
 jenkins (Jenkins CI Server)
