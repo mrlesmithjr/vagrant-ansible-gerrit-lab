@@ -16,6 +16,8 @@ Vagrant.configure(2) do |config|
       vb.memory = "1024"
     end
     samba.vm.provision :shell, path: "provision.sh", keep_color: "true"
+    samba.vm.provision :shell, inline: 'ansible-galaxy install -r /vagrant/requirements.yml -f'
+    samba.vm.provision :shell, inline: 'ansible-playbook -i /vagrant/hosts -c local /vagrant/playbook.yml --limit "samba-server"'
   end
   config.vm.define "gerrit" do |gerrit|
     gerrit.vm.box = "mrlesmithjr/trusty64"
