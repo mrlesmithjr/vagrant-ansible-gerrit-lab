@@ -7,7 +7,7 @@
         enabled: true  #defines if replication should be enabled or not
         name: 'gitlab'  #define name to assign to replication definition
         owner: 'infra'  #define username or groupname...if collaborating use groupname
-        url: 'git@gitlab.{{ pri_domain_name }}:{{ gerrit_replication_info.owner }}/${name}.git'  #define remote url
+        url: 'git@gitlab.{{ pri_domain_name }}:{{ gerrit_replication_info.owner }}'  #define remote url
         timeout: '30'  #define the replication timeout
         threads: '3'  #defines the number of threads to allocate to replication
         authgroup: 'Gitlab Replication'  #define the gerrit group to execute replication as..This group needs to be created in gerrit as well. and perms defined as below.
