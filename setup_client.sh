@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo apt-get update
-sudo apt-get -y install python-setuptools python-dev libffi-dev libssl-dev git sshpass tree
+sudo apt-get -y install python-setuptools python-dev libffi-dev libssl-dev git git-review sshpass tree
 sudo easy_install pip
 
 sudo -H pip uninstall -y virtualenv
