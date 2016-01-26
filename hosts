@@ -7,6 +7,9 @@ gerrit  ansible_ssh_host=192.168.202.201  ansible_ssh_private_key_file=.vagrant/
 [jenkins-server]
 jenkins  ansible_ssh_host=192.168.202.203  ansible_ssh_private_key_file=.vagrant/machines/jenkins/virtualbox/private_key
 
+[gitlab-server]
+gitlab  ansible_ssh_host=192.168.202.204  ansible_ssh_private_key_file=.vagrant/machines/gitlab/virtualbox/private_key
+
 [lamp-servers]
 node1  ansible_ssh_host=192.168.202.211  ansible_ssh_private_key_file=.vagrant/machines/node1/virtualbox/private_key
 node2  ansible_ssh_host=192.168.202.212  ansible_ssh_private_key_file=.vagrant/machines/node2/virtualbox/private_key

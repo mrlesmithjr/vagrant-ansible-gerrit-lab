@@ -32,6 +32,14 @@
     - role: ansible-jenkins
   tasks:
 
+- name: Installs Gitlab-CE
+  hosts: gitlab-server
+  become: true
+  vars:
+  roles:
+    - role: ansible-gitlab-ce
+  tasks:
+    
 - name: Update /etc/hosts
   hosts: all
   remote_user: vagrant

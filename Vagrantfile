@@ -44,6 +44,20 @@ Vagrant.configure(2) do |config|
     jenkins.vm.provision :shell, inline: 'ansible-galaxy install -r /vagrant/requirements.yml -f'
     jenkins.vm.provision :shell, inline: 'ansible-playbook -i /vagrant/hosts -c local /vagrant/playbook.yml --limit "jenkins"'
   end
+  config.vm.define "gitlab" do |gitlab|
+    gitlab.vm.box = "mrlesmithjr/trusty64"
+    gitlab.vm.hostname = "gitlab"
+
+    gitlab.vm.network :private_network, ip: "192.168.202.204"
+    gitlab.vm.network "forwarded_port", guest: 80, host: 8082
+
+    gitlab.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+    end
+    gitlab.vm.provision :shell, path: "provision.sh", keep_color: "true"
+    gitlab.vm.provision :shell, inline: 'ansible-galaxy install -r /vagrant/requirements.yml -f'
+    gitlab.vm.provision :shell, inline: 'ansible-playbook -i /vagrant/hosts -c local /vagrant/playbook.yml --limit "gitlab"'
+  end
   config.vm.define "node1" do |node1|
     node1.vm.box = "mrlesmithjr/trusty64"
     node1.vm.hostname = "node1"
