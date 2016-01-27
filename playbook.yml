@@ -27,7 +27,7 @@
   vars:
     - gerrit_allow_remote_admin: true  #defines if gerrit should allow remote admin capabilities
     - gerrit_replication_enabled: true
-    - gerrit_auth_type: OPENID  #defines authorization type...OPENID, LDAP, LDAP_BIND...
+    - gerrit_auth_type: LDAP_BIND  #defines authorization type...OPENID, LDAP, LDAP_BIND...
     - gerrit_db_info:
 #        - host: localhost
 #          type: h2
@@ -39,6 +39,17 @@
           db: reviewdb
           user: gerrit
           pass: gerrit
+    - gerrit_ldap_info:
+        - server: 'ldap://192.168.202.200'
+          accountbase: 'DC=example,DC=org'
+          accountpattern: '(&(objectClass=person)(userPrincipalName=${username}))'
+          accountscope: 'sub'
+          groupbase: 'DC=example,DC=org'
+          accountfullname: 'displayName'
+          accountmemberfield: 'memberOf'
+          accountemailaddress: 'mail'
+          accountsshusername: '${sAMAccountName.toLowerCase}'
+          referral: 'follow'
     - gerrit_vagrant_install: true
     - install_mysql: true
   roles:
