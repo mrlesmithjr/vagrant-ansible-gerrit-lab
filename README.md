@@ -34,6 +34,10 @@ Usage
 
 #### Gerrit
 http://127.0.0.1:8080
+````
+user: lab@vagrant.local
+pass: P@55w0rd
+````
 #### Jenkins
 http://127.0.0.1:8081
 #### Gitlab-CE
