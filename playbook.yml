@@ -42,10 +42,10 @@
           pass: gerrit
     - gerrit_ldap_info:
         - server: 'ldap://192.168.202.200'
-          accountbase: 'DC=example,DC=org'
+          accountbase: 'DC=vagrant,DC=local'
           accountpattern: '(&(objectClass=person)(userPrincipalName=${username}))'
           accountscope: 'sub'
-          groupbase: 'DC=example,DC=org'
+          groupbase: 'DC=vagrant,DC=local'
           accountfullname: 'displayName'
           accountmemberfield: 'memberOf'
           accountemailaddress: 'mail'
