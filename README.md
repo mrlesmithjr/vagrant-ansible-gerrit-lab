@@ -42,11 +42,12 @@ pass: P@55w0rd
 http://127.0.0.1:8081
 #### Gitlab-CE
 http://127.0.0.1:8082
+````
+user: lab
+pass: P@55w0rd
+````
 
-To access via ssh
-````
-vagrant ssh gerrit
-````
+To access via ssh (replace gerrit w/any of the following samba, gerrit, gitlab, jenkins, client, node1 or node2)
 ````
 vagrant ssh client
 ````

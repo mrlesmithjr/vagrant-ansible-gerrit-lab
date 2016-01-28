@@ -74,13 +74,14 @@
   hosts: gitlab-server
   become: true
   vars:
+    - config_gitlab: true
     - gitlab_active_directory: true
-    - gitlab_ldap_base_dn: 'DC=vagrant,DC=local'  #define here or in group_vars/group
-    - gitlab_ldap_bind_dn: 'gitlab'  #define here or in group_vars/group
+    - gitlab_ldap_base_dn: 'CN=Users,DC=vagrant,DC=local'  #define here or in group_vars/group
+    - gitlab_ldap_bind_dn: 'CN=gitlab,CN=Users,DC=vagrant,DC=local'  #define here or in group_vars/group
     - gitlab_ldap_bind_pass: 'P@55w0rd'  #define here or in group_vars/group
     - gitlab_ldap_enabled: true  #define here or in group_vars/group
     - gitlab_ldap_servers:  #define here or in group_vars/group
-        - host: '192.168.200.200'
+        - host: '192.168.202.200'
           role: main
     - pri_domain_name: vagrant.local
   roles:
