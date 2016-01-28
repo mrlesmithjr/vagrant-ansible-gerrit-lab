@@ -4,6 +4,7 @@
   become: true
   vars:
     - enable_dhcp_services: false
+    - pri_domain_name: vagrant.local
     - samba_create_domain_controller: true
     - samba_create_domain_users: true  #defines if users defined in samba_domain_users list should be created
     - samba_domain_users:
@@ -52,6 +53,7 @@
           referral: 'follow'
     - gerrit_vagrant_install: true
     - install_mysql: true
+    - pri_domain_name: vagrant.local
   roles:
     - role: ansible-apache2
     - role: ansible-mariadb-mysql
@@ -63,6 +65,7 @@
   hosts: jenkins-server
   become: true
   vars:
+    - pri_domain_name: vagrant.local
   roles:
     - role: ansible-jenkins
   tasks:
@@ -71,6 +74,7 @@
   hosts: gitlab-server
   become: true
   vars:
+    - pri_domain_name: vagrant.local
   roles:
     - role: ansible-postfix
     - role: ansible-gitlab-ce
