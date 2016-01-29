@@ -55,6 +55,7 @@
           referral: 'follow'
     - gerrit_vagrant_install: true
     - install_mysql: true
+    - nameserver: '192.168.202.200'
     - pri_domain_name: vagrant.local
   roles:
     - role: ansible-apache2
@@ -62,26 +63,57 @@
       when: install_mysql is defined and install_mysql
     - role: ansible-gerrit
   tasks:
+    - name: Creating /etc/rc.local
+      template:
+        src: "templates/rc.local.j2"
+        dest: "/etc/rc.local"
+        owner: root
+        group: root
+        mode: 0755
+
+    - name: configuring /etc/resolv.conf workaround
+      template:
+        src: "templates/resolv.conf.j2"
+        dest: "/etc/resolv.conf.mine"
+        owner: root
+        group: root
+        mode: 0644
 
 - name: Installs Jenkins
   hosts: jenkins-server
   become: true
   vars:
-    - config_jenkins: true
+    - config_jenkins: false
     - jenkins_ldap_info:
         active_directory: true
-        enabled: true
+        enabled: false
         server: '192.168.202.200'
         port: 389
         root_dn: 'DC=vagrant,DC=local'
         user_search_base: 'CN=Users'
-        manager_dn: 'CN=gitlab,CN=Users,DC=vagrant,DC=local'
+        manager_dn: 'CN=jenkins,CN=Users,DC=vagrant,DC=local'
         manager_password: 'P@55w0rd'  #This will be encrypted when saved from WebUI
         disable_email_address_resolver: false
+    - nameserver: '192.168.202.200'
     - pri_domain_name: vagrant.local
   roles:
     - role: ansible-jenkins
   tasks:
+    - name: Creating /etc/rc.local
+      template:
+        src: "templates/rc.local.j2"
+        dest: "/etc/rc.local"
+        owner: root
+        group: root
+        mode: 0755
+
+    - name: configuring /etc/resolv.conf workaround
+      template:
+        src: "templates/resolv.conf.j2"
+        dest: "/etc/resolv.conf.mine"
+        owner: root
+        group: root
+        mode: 0644
 
 - name: Installs Gitlab-CE
   hosts: gitlab-server
@@ -96,17 +128,34 @@
     - gitlab_ldap_servers:  #define here or in group_vars/group
         - host: '192.168.202.200'
           role: main
+    - nameserver: '192.168.202.200'
     - pri_domain_name: vagrant.local
   roles:
     - role: ansible-postfix
     - role: ansible-gitlab-ce
   tasks:
+    - name: Creating /etc/rc.local
+      template:
+        src: "templates/rc.local.j2"
+        dest: "/etc/rc.local"
+        owner: root
+        group: root
+        mode: 0755
+
+    - name: configuring /etc/resolv.conf workaround
+      template:
+        src: "templates/resolv.conf.j2"
+        dest: "/etc/resolv.conf.mine"
+        owner: root
+        group: root
+        mode: 0644
 
 - name: Update /etc/hosts
   hosts: all
   remote_user: vagrant
   become: true
   vars:
+    - pri_domain_name: vagrant.local
   roles:
   tasks:
     - name: updating /etc/hosts
