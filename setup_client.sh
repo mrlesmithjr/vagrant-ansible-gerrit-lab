@@ -57,3 +57,11 @@ git clone https://github.com/mrlesmithjr/ansible-clone-git-repos.git
 #./clone_git_repos.sh
 #cd ../GitHub/mrlesmithjr
 #ls
+# Generate SSH Keys if not found
+file=~/.ssh/id_rsa
+if [ ! -f "$file" ]
+then
+  ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -P ""
+else
+  echo "$file found."
+fi

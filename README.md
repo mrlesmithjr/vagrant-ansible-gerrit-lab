@@ -54,7 +54,14 @@ vagrant ssh client
 
 To setup your client I recommend heading over to the following link and follow.
 
-http://everythingshouldbevirtual.com/ansible-setting-up-an-ansible-control-machine-part-1
+http://everythingshouldbevirtual.com/ansible-setting-up-an-ansible-control-machine-part-1  
+
+Or....You can do the following...
+````
+vagrant ssh client
+cd /vagrant
+./setup_client.sh
+````
 
 Dependencies
 ------------
