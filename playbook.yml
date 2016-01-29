@@ -12,6 +12,8 @@
           password: 'P@55w0rd'
         - name: 'gitlab'
           password: 'P@55w0rd'
+        - name: 'jenkins'
+          password: 'P@55w0rd'
         - name: 'lab'
           password: 'P@55w0rd'
     - samba_server_role: 'active directory domain controller'  #defines server role...(standalone server or active directory domain controller)
@@ -65,6 +67,17 @@
   hosts: jenkins-server
   become: true
   vars:
+    - config_jenkins: true
+    - jenkins_ldap_info:
+        active_directory: true
+        enabled: true
+        server: '192.168.202.200'
+        port: 389
+        root_dn: 'DC=vagrant,DC=local'
+        user_search_base: 'CN=Users'
+        manager_dn: 'CN=gitlab,CN=Users,DC=vagrant,DC=local'
+        manager_password: 'P@55w0rd'  #This will be encrypted when saved from WebUI
+        disable_email_address_resolver: false
     - pri_domain_name: vagrant.local
   roles:
     - role: ansible-jenkins
