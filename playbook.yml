@@ -63,21 +63,26 @@
       when: install_mysql is defined and install_mysql
     - role: ansible-gerrit
   tasks:
-    - name: Creating /etc/rc.local
-      template:
-        src: "templates/rc.local.j2"
-        dest: "/etc/rc.local"
-        owner: root
-        group: root
-        mode: 0755
-
-    - name: configuring /etc/resolv.conf workaround
-      template:
-        src: "templates/resolv.conf.j2"
-        dest: "/etc/resolv.conf.mine"
-        owner: root
-        group: root
-        mode: 0644
+#    - name: Creating /etc/rc.local
+#      template:
+#        src: "templates/rc.local.j2"
+#        dest: "/etc/rc.local"
+#        owner: root
+#        group: root
+#        mode: 0755
+#      register: rc_local
+#
+#    - name: configuring /etc/resolv.conf workaround
+#      template:
+#        src: "templates/resolv.conf.j2"
+#        dest: "/etc/resolv.conf.mine"
+#        owner: root
+#        group: root
+#        mode: 0644
+#
+#    - name: updating current /etc/resolv.conf
+#      command: /etc/rc.local
+#      when: rc_local.changed
 
 - name: Installs Jenkins
   hosts: jenkins-server
@@ -99,21 +104,26 @@
   roles:
     - role: ansible-jenkins
   tasks:
-    - name: Creating /etc/rc.local
-      template:
-        src: "templates/rc.local.j2"
-        dest: "/etc/rc.local"
-        owner: root
-        group: root
-        mode: 0755
+#    - name: Creating /etc/rc.local
+#      template:
+#        src: "templates/rc.local.j2"
+#        dest: "/etc/rc.local"
+#        owner: root
+#        group: root
+#        mode: 0755
+#      register: rc_local
+#
+#    - name: configuring /etc/resolv.conf workaround
+#      template:
+#        src: "templates/resolv.conf.j2"
+#        dest: "/etc/resolv.conf.mine"
+#        owner: root
+#        group: root
+#        mode: 0644
 
-    - name: configuring /etc/resolv.conf workaround
-      template:
-        src: "templates/resolv.conf.j2"
-        dest: "/etc/resolv.conf.mine"
-        owner: root
-        group: root
-        mode: 0644
+#    - name: updating current /etc/resolv.conf
+#      command: /etc/rc.local
+#      when: rc_local.changed
 
 - name: Installs Gitlab-CE
   hosts: gitlab-server
@@ -134,21 +144,26 @@
     - role: ansible-postfix
     - role: ansible-gitlab-ce
   tasks:
-    - name: Creating /etc/rc.local
-      template:
-        src: "templates/rc.local.j2"
-        dest: "/etc/rc.local"
-        owner: root
-        group: root
-        mode: 0755
+#    - name: Creating /etc/rc.local
+#      template:
+#        src: "templates/rc.local.j2"
+#        dest: "/etc/rc.local"
+#        owner: root
+#        group: root
+#        mode: 0755
+#      register: rc_local
 
-    - name: configuring /etc/resolv.conf workaround
-      template:
-        src: "templates/resolv.conf.j2"
-        dest: "/etc/resolv.conf.mine"
-        owner: root
-        group: root
-        mode: 0644
+#    - name: configuring /etc/resolv.conf workaround
+#      template:
+#        src: "templates/resolv.conf.j2"
+#        dest: "/etc/resolv.conf.mine"
+#        owner: root
+#        group: root
+#        mode: 0644
+
+#    - name: updating current /etc/resolv.conf
+#      command: /etc/rc.local
+#      when: rc_local.changed
 
 - name: Update /etc/hosts
   hosts: all
