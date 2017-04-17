@@ -7,7 +7,7 @@
 # you're doing.
 Vagrant.configure(2) do |config|
   config.vm.define "samba" do |samba|
-    samba.vm.box = "mrlesmithjr/trusty64"
+    samba.vm.box = "mrlesmithjr/xenial64"
     samba.vm.hostname = "samba"
 
     samba.vm.network :private_network, ip: "192.168.202.200"
@@ -20,7 +20,7 @@ Vagrant.configure(2) do |config|
     samba.vm.provision :shell, inline: 'ansible-playbook -i /vagrant/hosts -c local /vagrant/playbook.yml --limit "samba-server"'
   end
   config.vm.define "gerrit" do |gerrit|
-    gerrit.vm.box = "mrlesmithjr/trusty64"
+    gerrit.vm.box = "mrlesmithjr/xenial64"
     gerrit.vm.hostname = "gerrit"
 
     gerrit.vm.network :private_network, ip: "192.168.202.201"
@@ -34,7 +34,7 @@ Vagrant.configure(2) do |config|
     gerrit.vm.provision :shell, inline: 'ansible-playbook -i /vagrant/hosts -c local /vagrant/playbook.yml --limit "gerrit-server"'
   end
   config.vm.define "client" do |client|
-    client.vm.box = "mrlesmithjr/trusty64"
+    client.vm.box = "mrlesmithjr/xenial64"
     client.vm.hostname = "client"
 
     client.vm.network :private_network, ip: "192.168.202.202"
@@ -44,7 +44,7 @@ Vagrant.configure(2) do |config|
     end
   end
   config.vm.define "jenkins" do |jenkins|
-    jenkins.vm.box = "mrlesmithjr/trusty64"
+    jenkins.vm.box = "mrlesmithjr/xenial64"
     jenkins.vm.hostname = "jenkins"
 
     jenkins.vm.network :private_network, ip: "192.168.202.203"
@@ -58,7 +58,7 @@ Vagrant.configure(2) do |config|
     jenkins.vm.provision :shell, inline: 'ansible-playbook -i /vagrant/hosts -c local /vagrant/playbook.yml --limit "jenkins"'
   end
   config.vm.define "gitlab" do |gitlab|
-    gitlab.vm.box = "mrlesmithjr/trusty64"
+    gitlab.vm.box = "mrlesmithjr/xenial64"
     gitlab.vm.hostname = "gitlab"
 
     gitlab.vm.network :private_network, ip: "192.168.202.204"
@@ -72,7 +72,7 @@ Vagrant.configure(2) do |config|
     gitlab.vm.provision :shell, inline: 'ansible-playbook -i /vagrant/hosts -c local /vagrant/playbook.yml --limit "gitlab"'
   end
   config.vm.define "node1" do |node1|
-    node1.vm.box = "mrlesmithjr/trusty64"
+    node1.vm.box = "mrlesmithjr/xenial64"
     node1.vm.hostname = "node1"
 
     node1.vm.network :private_network, ip: "192.168.202.211"
@@ -82,7 +82,7 @@ Vagrant.configure(2) do |config|
     end
   end
   config.vm.define "node2" do |node2|
-    node2.vm.box = "mrlesmithjr/trusty64"
+    node2.vm.box = "mrlesmithjr/xenial64"
     node2.vm.hostname = "node2"
 
     node2.vm.network :private_network, ip: "192.168.202.212"
