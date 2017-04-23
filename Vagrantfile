@@ -14,6 +14,7 @@ Vagrant.configure(2) do |config|
 
     samba.vm.provider "virtualbox" do |vb|
       vb.memory = "1024"
+      vb.name = "mrlesmithjr - samba"
     end
     samba.vm.provision :shell, path: "provision.sh", keep_color: "true"
     samba.vm.provision :shell, inline: 'ansible-galaxy install -r /vagrant/requirements.yml -f'
@@ -28,6 +29,7 @@ Vagrant.configure(2) do |config|
 
     gerrit.vm.provider "virtualbox" do |vb|
       vb.memory = "1024"
+      vb.name = "mrlesmithjr - gerrit"
     end
     gerrit.vm.provision :shell, path: "provision.sh", keep_color: "true"
     gerrit.vm.provision :shell, inline: 'ansible-galaxy install -r /vagrant/requirements.yml -f'
@@ -41,6 +43,7 @@ Vagrant.configure(2) do |config|
 
     client.vm.provider "virtualbox" do |vb|
       vb.memory = "512"
+      vb.name = "mrlesmithjr - client"
     end
   end
   config.vm.define "jenkins" do |jenkins|
@@ -52,6 +55,7 @@ Vagrant.configure(2) do |config|
 
     jenkins.vm.provider "virtualbox" do |vb|
       vb.memory = "1024"
+      vb.name = "mrlesmithjr - jenkins"
     end
     jenkins.vm.provision :shell, path: "provision.sh", keep_color: "true"
     jenkins.vm.provision :shell, inline: 'ansible-galaxy install -r /vagrant/requirements.yml -f'
@@ -66,6 +70,7 @@ Vagrant.configure(2) do |config|
 
     gitlab.vm.provider "virtualbox" do |vb|
       vb.memory = "1024"
+      vb.name = "mrlesmithjr - gitlab"
     end
     gitlab.vm.provision :shell, path: "provision.sh", keep_color: "true"
     gitlab.vm.provision :shell, inline: 'ansible-galaxy install -r /vagrant/requirements.yml -f'
@@ -79,6 +84,7 @@ Vagrant.configure(2) do |config|
 
     node1.vm.provider "virtualbox" do |vb|
       vb.memory = "512"
+      vb.name = "mrlesmithjr - node1"
     end
   end
   config.vm.define "node2" do |node2|
@@ -89,6 +95,7 @@ Vagrant.configure(2) do |config|
 
     node2.vm.provider "virtualbox" do |vb|
       vb.memory = "512"
+      vb.name = "mrlesmithjr - node2"
     end
   end
 end
